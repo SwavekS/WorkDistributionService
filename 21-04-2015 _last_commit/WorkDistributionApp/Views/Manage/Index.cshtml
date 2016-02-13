@@ -1,0 +1,34 @@
+﻿@model WorkDistributionApp.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage your account";
+}
+<hr />
+<h2>@ViewBag.Title</h2>
+<p class="text-success">@ViewBag.StatusMessage</p>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <p>
+            @if (Model.HasPassword)
+            {
+                <div>
+                    Change your password: 
+                    @Html.ActionLink("Change", "ChangePassword", null, new { @class = "btn btn-default" })
+                </div>
+            }
+            else
+            {
+                @Html.ActionLink("Pick a password", "SetPassword")
+            }
+        </p>
+        @if ((bool)ViewData["hasSubscription"] == true)
+        {
+            <form method="post" action="/Stripe/Delete">
+                <p>
+                    Cancel your subscription: 
+                    <input type="submit" value="Cancel" class="btn btn-default" />
+                </p>
+            </form>
+        }        
+    </div>
+</div>

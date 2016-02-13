@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+<div class="jumbotron" id="jumbo">
+    <div class="container">
+        <center>
+            <div class="col-sm-6">
+                <h3>Work Distribution Service (WDS)<br />Automate your requests delivery</h3>
+                <p>
+                    @Html.ActionLink(
+                    linkText: "*FREE 30-Day Trial",
+                    actionName: "GetToken",
+                    controllerName: "Stripe",
+                    htmlAttributes: new { @class = "btn btn-primary register-btn", id = "hero-btn" },
+                    routeValues: null)
+                </p>
+                @if ((bool)(ViewData["ContactAdmin"]) == true)
+                {
+                    <div align="center" style="color:#6ac6e1">
+                        'Team Queue' and 'Role' are not assigned for @User.Identity.Name<br />
+                        Please contact your supervisor!
+                    </div>
+                }
+            </div>
+
+            <div class="col-sm-6">
+                <table class="table">
+                    <tr id="subTop">
+                        <th>
+                            Subscription Details
+                        </th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            Type:
+                        </td>
+                        <td id="subValues">
+                            @ViewBag.SubscriptionType
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Status:
+                        </td>
+                        <td id="subValues">
+                            @ViewBag.SubscriptionStatus
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Customer ID:
+                        </td>
+                        <td id="subValues">
+                            @ViewBag.CustomerId
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Next Free Trial in:
+                        </td>
+                        <td id="subValues" style="font-size:15px">
+                            @ViewBag.NewFreeSubscriptionAllowed
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </center>
+    </div>
+</div>
+
+<div class="row">
+    <h3 class="text-center">Subscription Pricing</h3>
+    <hr />
+    <div class="col-sm-1"></div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-4">
+        <div class="panel panel-default text-center">
+            <div class="panel-heading">
+                <h3>Standard</h3>
+            </div>
+            <div class="panel-body">
+                <h4 class="panel-title price">€49.99/month</h4>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">Standard plan</li>
+                <li class="list-group-item">Full user access </li>
+                <li class="list-group-item">No user management</li>
+                <li class="list-group-item">No additional functions</li>
+                <li class="list-group-item">FREE 30-Day Trial</li>
+                @if ((bool)(ViewData["LockedButton"]) == true)
+                {
+                    <li class="list-group-item"><a href="@Url.Action("GetToken", "Stripe")" class="btn btn-default ">Locked</a></li>
+                }
+                else
+                {
+                    <li class="list-group-item"><a href="@Url.Action("GetToken", "Stripe")" class="btn btn-default ">Sign up</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="panel panel-danger text-center">
+            <div class="panel-heading">
+                <h3>Ultimate</h3>
+            </div>
+            <div class="panel-body">
+                <h3 class="panel-title price">€99.99/month</h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">Unlimited plan</li>
+                <li class="list-group-item">Full admin access</li>
+                <li class="list-group-item">User Management</li>
+                <li class="list-group-item">Additional functions</li>
+                <li class="list-group-item">Full control</li>
+                <li class="list-group-item"><a href="@Url.Action("GetToken2", "Stripe")" class="btn btn-danger">Sign up</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div>
+    <span style="font-style:italic;text-align:right;color:white">*Please register first </span>
+</div>

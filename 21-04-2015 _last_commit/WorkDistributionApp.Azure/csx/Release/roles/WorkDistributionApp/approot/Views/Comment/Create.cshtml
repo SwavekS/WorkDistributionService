@@ -1,0 +1,67 @@
+﻿@model WorkDistributionApp.Models.Comment
+
+@*@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>*@
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        <h4>Comment</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.WorkObjectID)
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.WorkObjectID, "WorkObjectID", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("lista", String.Empty)
+                @Html.ValidationMessageFor(model => model.WorkObjectID)
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Content, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Content, 10, 60, null)
+                @Html.ValidationMessageFor(model => model.Content)
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.DateStamp, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateStamp)
+                @Html.ValidationMessageFor(model => model.DateStamp)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.User, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.User)
+                @Html.ValidationMessageFor(model => model.User)
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" style="color:green" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back", "Details", "WorkObject", new { id = Model.WorkObjectID }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,19 @@
+﻿@if((bool)ViewData["hasSubscription"] ==true)
+{
+    <h2>Cancel</h2>
+
+    <h3>Are you sure you want to cancel your subcription?</h3>
+    <div>
+        <h4></h4>
+        <hr />
+    
+            @Html.ActionLink("Yes", "CancelSubscription", "Stripe", null, new { @class = "btn btn-default"})
+            <span> or </span>
+            @Html.ActionLink("No", "Index", "Manage", null, new { @class = "btn btn-default"})
+    </div>
+}
+else
+{
+    <hr />
+    @Html.ActionLink("Back", "Index", "Home", null, new { @class = "btn btn-default" })
+}

@@ -1,0 +1,98 @@
+﻿
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+/* sets audio attributes used to play audio attachments */
+audio { height: 33px; width: 200px; display: block; margin:-5px; cursor:pointer }
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* subscription table styles*/
+#jumbo {
+  padding: 30px;
+}
+#subTop {
+    color:#ffffef;
+    background-color:#3e444c;
+    font-size:15px;
+}
+#subValues{
+    color:#bb2424;
+    font-weight:bold;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+select#TeamQueue{
+    color: black;
+}
+
+select#Status{
+    color: black;
+}
+
+select#Priority{
+    color: black;
+}
+
+select#FileType{
+    color: black;
+}
+
+select#SubscriptionType{
+    color: black;
+}
+
+input.searchButton{
+    margin-bottom: 10px;
+}
+
+/*tr {
+width: 100%;
+display: inline-table;
+}
+
+table{
+ height:50px; 
+}
+tbody{
+  overflow-y: scroll;
+  height: 100px;
+  width: 80%;
+  position:absolute;
+}*/
