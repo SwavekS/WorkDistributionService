@@ -1,0 +1,117 @@
+﻿@model IEnumerable<WorkDistributionApp.Models.WorkObject>
+
+@*@{
+    ViewBag.Title = "Index";
+    //var list = ViewBag.tq;
+    
+}*@
+
+<div class="col-md-8"></div>
+<div class="col-md-4">
+    <span style="font-style:italic;text-align:right;color:rgb(209, 202, 143)">@ViewBag.Subscription </span>
+    </div>
+    <hr />
+    @using (Html.BeginForm())
+    {
+
+        <div class="col-md-3">
+            <div style="font-weight:bold">Search engine</div>
+            <table class="table">
+                <tr>
+                    <th>
+                        Policy no
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Filter
+                    </th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBox("policySearch")</td>
+                    <td>@Html.TextBox("nameSearch")</td>
+                    <td><input class="searchButton" type="submit" value="Search" /> </td>
+                </tr>
+
+            </table>
+        </div>
+    }
+    <hr />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.ActionLink("Policy No", "Index", new { sortOrder = ViewBag.PolicyNoSortParm })
+                </th>
+                <th>
+                    @Html.ActionLink("Client Surname", "Index", new { sortOrder = ViewBag.NameSortParm })
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClientName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClientDOB)
+                </th>
+                <th>
+                    @Html.ActionLink("Team Queue", "Index", new { sortOrder = ViewBag.TeamQueueSortParm })
+                </th>
+                <th>
+                    @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.StatusSortParm })
+                </th>
+                <th>
+                    @Html.ActionLink("Priority", "Index", new { sortOrder = ViewBag.PrioritySortParm })
+                </th>
+                <th>
+                    @Html.ActionLink("Start Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+                </th>
+                <th>
+                    Functions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PolicyNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientSurname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientDOB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeamQueue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                        @if (item.isLocked == true)
+                        {
+                            <span style="color: #ff0000">Locked</span>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Priority)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.WorkObjectID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.WorkObjectID })
+                        @if (item.isLocked && User.IsInRole("Admin"))
+                        {
+                            <span>|</span>
+                            @Html.ActionLink("Unlock", "Unlock", new { id = item.WorkObjectID })
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

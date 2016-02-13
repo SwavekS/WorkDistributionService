@@ -1,0 +1,112 @@
+﻿@model IEnumerable<WorkDistributionApp.Models.WorkObject>
+
+@*@{
+    ViewBag.Title = "History";
+    //var list = ViewBag.tq;
+    
+}
+
+<h3>Work Object List</h3>*@
+<hr />
+    @using (Html.BeginForm())
+    {
+
+        <div class="col-md-3">
+            <div style="font-weight:bold">Search engine</div>
+            <table class="table">
+                <tr>
+                    <th>
+                        Policy no
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Filter
+                    </th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBox("policySearch")</td>
+                    <td>@Html.TextBox("nameSearch")</td>
+                    <td><input class="searchButton" type="submit" value="Search" /> </td>
+                </tr>
+
+            </table>
+        </div>
+    }
+    <hr />
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.ActionLink("Policy No", "History", new { sortOrder = ViewBag.PolicyNoSortParm })
+                </th>
+                <th>
+                    @Html.ActionLink("Client Surname", "History", new { sortOrder = ViewBag.NameSortParm })
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClientName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClientDOB)
+                </th>
+                <th>
+                    @Html.ActionLink("Team Queue", "History", new { sortOrder = ViewBag.TeamQueueSortParm })
+                </th>
+                <th>
+                    @Html.ActionLink("Status", "History", new { sortOrder = ViewBag.StatusSortParm })
+                </th>
+                <th>
+                    @Html.ActionLink("Priority", "History", new { sortOrder = ViewBag.PrioritySortParm })
+                </th>
+                <th>
+                    @Html.ActionLink("Close Date", "History", new { sortOrder = ViewBag.DateSortParm })
+                </th>
+            
+                <th>
+                    Functions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PolicyNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientSurname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientDOB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeamQueue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                        @if (item.isLocked == true)
+                        {
+                            <span style="color: #ff0000">Locked</span>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Priority)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.WorkObjectID })
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.WorkObjectID })*@
+                        @*@Html.ActionLink("AddComment", "AddComment", new { id = item.WorkObjectID })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

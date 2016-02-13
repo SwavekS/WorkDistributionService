@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RoleModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WorkDistributionApp" version="2.5.6496.10" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <Runtime>
+    <EntryPoint>
+      <NetFxEntryPoint assemblyName="WorkDistributionApp.dll" targetFrameworkVersion="v4.0" />
+    </EntryPoint>
+  </Runtime>
+  <Properties>
+    <Property name="TargetFrameworkVersion" value="v4.5" />
+    <Property name="RoleType" value="Web" />
+    <Property name="RoleName" value="WorkDistributionApp" />
+    <Property name="ProjectName" value="WorkDistributionApp" />
+    <Property name="Configuration" value="Release" />
+    <Property name="Platform" value="AnyCPU" />
+    <Property name="SetConfiguration" value="Configuration=Release" />
+    <Property name="SetPlatform" value="Platform=AnyCPU" />
+    <Property name="RoleTargetFramework" value="v4.5" />
+    <Property name="OutputDir" value="C:\Users\Administrator\Desktop\21-04-2015\WorkDistributionApp.Azure\obj\Release\WorkDistributionApp\" />
+    <Property name="EntryPoint" value="WorkDistributionApp.dll" />
+    <Property name="SourceDir" value="C:\Users\Administrator\Desktop\21-04-2015\WorkDistributionApp\" />
+    <Property name="SitePhysicalPath" value="C:\Users\Administrator\Desktop\21-04-2015\WorkDistributionApp.Azure\obj\Release\WorkDistributionApp\" />
+    <Property name="TargetRuntimeVersion" value="v4.0" />
+  </Properties>
+  <Sites>
+    <Site name="Web" physicalDirectory="C:\Users\Administrator\Desktop\21-04-2015\WorkDistributionApp.Azure\obj\Release\WorkDistributionApp\">
+      <Bindings>
+        <Binding name="Endpoint1" endpointName="Endpoint1" />
+      </Bindings>
+    </Site>
+  </Sites>
+</RoleModel>
